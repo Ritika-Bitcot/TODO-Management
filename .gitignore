@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+.env
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test & Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
