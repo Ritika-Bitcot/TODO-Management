@@ -23,11 +23,9 @@ repos:
           [
             "--ignore=E203,E501,E701,W503",
             "--max-line-length=100",
-            "app",
-            "services",
-            "tests",
+            "src",
           ]
-        exclude: ^(migrations/|services/db_management/migrations/versions/)
+        exclude: ^(app|services|tests|migrations/|docs/|requirements/)
 
   # 🔹 Pre-commit built-in hooks (general hygiene)
   - repo: https://github.com/pre-commit/pre-commit-hooks
