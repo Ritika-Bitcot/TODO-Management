@@ -6,3 +6,10 @@
 - API endpoints overview
 - Database schema
 - Architecture documentation
+
+### Changed
+- Updated architecture documentation with corrected references
+
+### Removed
+- Duplicate images moved to assets folder
+- `__pycache__` and Python build artifacts removed from repository
