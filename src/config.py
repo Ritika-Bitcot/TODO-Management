@@ -12,6 +12,11 @@ from constant import (
     JWT_REFRESH_TOKEN_EXPIRES,
     JWT_SECRET_KEY,
     SECRET_KEY,
+    TEST_DB_HOST,
+    TEST_DB_NAME,
+    TEST_DB_PASSWORD,
+    TEST_DB_PORT,
+    TEST_DB_USER,
 )
 
 
@@ -19,9 +24,6 @@ class Config:
     """Base configuration loaded from constants/env."""
 
     SECRET_KEY = SECRET_KEY
-
-    # Build database URL dynamically
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # JWT
@@ -29,3 +31,20 @@ class Config:
     JWT_ALGORITHM = JWT_ALGORITHM
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(seconds=JWT_ACCESS_TOKEN_EXPIRES)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(seconds=JWT_REFRESH_TOKEN_EXPIRES)
+
+
+class DevelopmentConfig(Config):
+    """Configuration for development environment."""
+
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    DEBUG = True
+
+
+class TestingConfig(Config):
+    """Configuration for testing environment."""
+
+    SQLALCHEMY_DATABASE_URI = (
+        f"postgresql+psycopg2://{TEST_DB_USER}:{TEST_DB_PASSWORD}" f"@{TEST_DB_HOST}:{TEST_DB_PORT}/{TEST_DB_NAME}"
+    )
+    TESTING = True
+    DEBUG = False
