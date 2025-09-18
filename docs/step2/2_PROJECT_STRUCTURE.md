@@ -37,7 +37,7 @@ TODO-Management/
 │   ├── __init__.py             # (empty by requirement)
 │   ├── config.py               # Configurations for envs
 │   ├── constant.py             # Shared constants (like status values)
-│   │
+│   ├── app.py                  # Flask entry point
 │   ├── routes/                 # Controllers
 │   │   ├── __init__.py         # (empty)
 │   │   ├── register.py
@@ -83,7 +83,6 @@ TODO-Management/
 ├── CHANGELOG.md
 ├── .pre-commit-config.yaml
 ├── alembic.ini                 # Alembic configuration (after init)
-├── app.py                      # Flask entry point
 └── README.md                   # Project overview
 ```
 ---
