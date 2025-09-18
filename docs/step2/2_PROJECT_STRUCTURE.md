@@ -35,10 +35,13 @@ TODO-Management/
 │   │
 ├── src/
 │   ├── __init__.py             # (empty by requirement)
-│   ├── config.py               # Configurations for envs
 │   ├── constant.py             # Shared constants (like status values)
 |   ├── app.py                  # Flask entry point
 │   │
+│   ├── core/                   # Core logic
+│   │   ├── __init__.py         # (empty)
+│   │   ├── config.py           # Configurations for envs
+|   |
 │   ├── routes/                 # Controllers
 │   │   ├── __init__.py         # (empty)
 │   │   ├── register.py
