@@ -12,6 +12,7 @@ alembic==1.13.2
 # Data Validation
 pydantic==2.9.2
 pydantic[email]==2.9.2
+pydantic-settings-2.10.1
 
 # Authentication & Security
 Flask-JWT-Extended==4.6.0
