@@ -16,6 +16,7 @@
 - Old `app/__init__.py` and route files replaced by new structure
 
 ## [Step 1]
+
 ### Added
 - Planning, design, user stories
 - API endpoints overview
@@ -26,5 +27,4 @@
 - Updated architecture documentation with corrected references
 
 ### Removed
-- Duplicate images moved to assets folder
 - `__pycache__` and Python build artifacts removed from repository

@@ -7,9 +7,9 @@ This document describes all API endpoints, their request/response formats, authe
 ## 1. Authentication Endpoints
 
 ### **Register User**
-- **Endpoint:** `/auth/register`
-- **Method:** `POST`
-- **Auth Required:** ❌ No
+- **Endpoint:** `/auth/register`  
+- **Method:** `POST`  
+- **Auth Required:** ❌ No  
 - **Description:** Register a new user with email and password.
 
 #### Request Body

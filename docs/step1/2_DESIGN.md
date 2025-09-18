@@ -2,6 +2,7 @@
 
 ## 1. Overview
 The TODO Management Application is built with a **modular, scalable, and secure architecture**.
+
 The design focuses on:
 - **Separation of concerns** (SOLID principles).
 - **Scalability** → Easy to extend without modifying existing files.

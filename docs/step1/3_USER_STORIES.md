@@ -27,7 +27,6 @@ As a new user, I want to register with a unique email and a strong password so t
 **Edge Cases:**
 - Invalid email → `422 Unprocessable Entity`
 - Weak password → `422 Unprocessable Entity`
-- Duplicate email → `400 Bad Request`
 
 ---
 
@@ -53,8 +52,7 @@ As a registered user, I want to log in with my email and password so that I can 
 **Edge Cases:**
 - Wrong password → `401 Unauthorized`
 - Expired token used later → `401 Unauthorized`
-- Token tampering → `401 Unauthorized`
-
+  
 ---
 
 ## 3. Create TODO Task
@@ -76,7 +74,6 @@ As a logged-in user, I want to create a TODO task so that I can track my activit
 
 **Edge Cases:**
 - Missing title → `422 Unprocessable Entity`
-- Invalid due_date format → `422 Unprocessable Entity`
 
 ---
 
@@ -99,7 +96,6 @@ As a logged-in user, I want to view my tasks so that I can monitor my activities
 **Edge Cases:**
 - Empty task list → Return empty array `[]`.
 - Task id not found → `404 Not Found`.
-
 ---
 
 ## 5. Update TODO Task
@@ -122,7 +118,6 @@ As a logged-in user, I want to update my tasks so that I can modify task details
 
 **Edge Cases:**
 - Invalid date format → `422 Unprocessable Entity`
-- Task does not exist → `404 Not Found`
 
 ---
 
@@ -146,4 +141,4 @@ As a logged-in user, I want to delete my tasks so that I can remove tasks I no l
 
 **Edge Cases:**
 - Task already deleted → `404 Not Found`.
-- Trying to delete another user’s task → `403 Forbidden`.
+- Trying to delete another user’s task → `403 Forbidden`.  

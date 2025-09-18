@@ -1,6 +1,6 @@
 # Database Schema - TODO Management Application
 
-The database schema is designed for **data integrity, security, and scalability**.
+The database schema is designed for **data integrity, security, and scalability**.  
 It uses **PostgreSQL** as the relational database and **SQLAlchemy ORM with Alembic** for migrations.
 
 ---
@@ -42,9 +42,9 @@ Stores tasks created by users.
 ---
 
 ## 3. Relationships
-- **One-to-Many (1:N)**
-  - A user can have many tasks.
-  - Each task belongs to exactly one user (`owner_id`).
+- **One-to-Many (1:N)**  
+  - A user can have many tasks.  
+  - Each task belongs to exactly one user (`owner_id`).  
 
 ### ER Diagram (Conceptual):
 **Users (1) ────< Tasks (N)**
@@ -70,9 +70,8 @@ CREATE TABLE tasks (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     due_date DATE,
-    status VARCHAR(50) NOT NULL DEFAULT 'pending'
+    status VARCHAR(50) NOT NULL DEFAULT 'pending' 
         CHECK (status IN ('pending','in_progress','completed')),
     owner_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
