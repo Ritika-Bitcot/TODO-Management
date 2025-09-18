@@ -1,5 +1,6 @@
 from flask import Flask
 
+from config import Config
 from routes.register import register_blueprints
 
 
@@ -11,6 +12,7 @@ def create_app() -> Flask:
         Flask: The Flask application instance.
     """
     app = Flask(__name__)
+    app.config.from_object(Config)
     register_blueprints(app)
     return app
 
