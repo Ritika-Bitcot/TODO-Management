@@ -52,7 +52,7 @@ As a registered user, I want to log in with my email and password so that I can 
 **Edge Cases:**
 - Wrong password → `401 Unauthorized`
 - Expired token used later → `401 Unauthorized`
-  
+
 ---
 
 ## 3. Create TODO Task
@@ -141,4 +141,4 @@ As a logged-in user, I want to delete my tasks so that I can remove tasks I no l
 
 **Edge Cases:**
 - Task already deleted → `404 Not Found`.
-- Trying to delete another user’s task → `403 Forbidden`.  
+- Trying to delete another user’s task → `403 Forbidden`.

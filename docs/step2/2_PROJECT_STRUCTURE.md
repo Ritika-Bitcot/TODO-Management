@@ -40,6 +40,8 @@ TODO-Management/
 │   │
 │   ├── routes/                 # Controllers
 │   │   ├── __init__.py         # (empty)
+│   │   ├── register.py
+│   │   └── home_routes.py      # Placeholder
 │   │   ├── auth_routes.py      # Placeholder
 │   │   └── task_routes.py      # Placeholder
 │   │
