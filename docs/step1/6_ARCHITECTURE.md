@@ -33,7 +33,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
    - Bcrypt for password hashing.  
    - Role-based access (owner-only for tasks).  
 
-![High Level Diagram](image-1.png)
+[High Level Diagram](../assests/image-1.png)
 ---
 
 ## 2. Workflows
@@ -46,7 +46,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 5. On success, JWT token is generated and returned.  
 6. Client stores JWT for authenticated requests.  
 
-![user_register_login diagram ](image-4.png)
+[user_register_login diagram ](../assests/image-4.png)
 ---
 
 ### 2.2 Task Workflow
@@ -56,7 +56,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 4. CRUD operation is performed (Create/Read/Update/Delete).  
 5. Response is returned with success/error.  
 
-![workflow diagram](image-2.png)
+[workflow diagram](../assests/image-2.png)
 ---
 
 ### 2.3 End-to-End Workflow
@@ -66,7 +66,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 4. Data Access Layer → PostgreSQL DB  
 5. PostgreSQL → returns data → Service Layer → API Layer → Client  
 
-![end_to_end workflow diagram](image-3.png)
+[end_to_end workflow diagram](../assests/image-3.png)
 ---
 
 ## 3. ER Diagram
