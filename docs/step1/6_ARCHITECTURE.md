@@ -39,6 +39,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 ## 2. Workflows
 
 ### 2.1 User Registration & Login
+
 1. Client sends registration request (`POST /auth/register`).  
 2. Backend validates email & password → hashes password with Bcrypt.  
 3. User is saved in database.  
@@ -50,6 +51,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 ---
 
 ### 2.2 Task Workflow
+
 1. Client includes JWT in `Authorization: Bearer <token>`.  
 2. Flask middleware validates the token.  
 3. Service layer checks if the task belongs to the user.  
@@ -60,6 +62,7 @@ The TODO Management Application follows a **modular, layered architecture** to e
 ---
 
 ### 2.3 End-to-End Workflow
+
 1. Client → Flask API Layer  
 2. API Layer → Service Layer (business logic)  
 3. Service Layer → Data Access Layer (ORM)  
@@ -72,4 +75,4 @@ The TODO Management Application follows a **modular, layered architecture** to e
 ## 3. ER Diagram
 
 Below is the conceptual ER diagram:
-
+[ER Diagram](../assests/image.png)

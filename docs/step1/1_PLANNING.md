@@ -84,6 +84,7 @@ The system emphasizes:
 ---
 
 ## 7. Conclusion
+
 The TODO Management Application planning establishes a **secure, scalable, and maintainable backend system** that will serve as the foundation for a productivity management platform.  
 
 The roadmap ensures incremental delivery, starting with **user authentication and task CRUD** as the MVP, while keeping extensibility in mind for future enhancements.
