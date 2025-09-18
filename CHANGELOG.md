@@ -1,5 +1,11 @@
 # Changelog
 
+## [Step 3]
+### Added
+- Local development setup with environment-based configuration
+- `.env` and `.env.example` for Flask secret key, DB URL, and JWT secret
+- Validation of environment variables using **Pydantic** in `src/config.py`
+
 ## [Step 2]
 ### Added
 - Project setup guide, project structure, and testing documentation
