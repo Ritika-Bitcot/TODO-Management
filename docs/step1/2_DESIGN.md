@@ -1,7 +1,7 @@
 # Design & Technology Stack - TODO Management Application
 
 ## 1. Overview
-The TODO Management Application is built with a **modular, scalable, and secure architecture**.  
+The TODO Management Application is built with a **modular, scalable, and secure architecture**.
 The design focuses on:
 - **Separation of concerns** (SOLID principles).
 - **Scalability** → Easy to extend without modifying existing files.
@@ -142,4 +142,3 @@ The design focuses on:
 - ✅ **Maintainability** → SOLID + ORM + migrations.
 - ✅ **Performance** → Flask is lightweight, PostgreSQL is optimized for queries.
 - ✅ **Community Support** → All chosen tools are widely adopted and well-documented.
-

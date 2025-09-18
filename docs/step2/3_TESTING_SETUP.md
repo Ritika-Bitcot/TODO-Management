@@ -1,6 +1,6 @@
 # Testing Setup - TODO Management Application
 
-Testing ensures code quality, correctness of business logic, and security compliance.  
+Testing ensures code quality, correctness of business logic, and security compliance.
 The application uses **pytest** as the testing framework with **pytest-flask** for Flask integration.
 
 ---

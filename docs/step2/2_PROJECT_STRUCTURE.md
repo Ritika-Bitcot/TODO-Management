@@ -1,6 +1,6 @@
 # Project Structure - TODO Management Application
 
-The project follows **SOLID principles** and a **layered architecture** for scalability and maintainability.  
+The project follows **SOLID principles** and a **layered architecture** for scalability and maintainability.
 Every feature is implemented in its own module, ensuring that new functionality can be added without modifying existing files.
 
 ---
@@ -9,7 +9,31 @@ Every feature is implemented in its own module, ensuring that new functionality 
 ```
 TODO-Management/
 │
-├── app/                        
+├── docs/
+│   ├── assests/
+│   │   ├──image-1.png
+│   │   ├──image-2.png
+│   │   └──image-3.png
+│   │   └──image-4.png
+│   │   └──image.png
+│   │
+│   ├── step1/
+│   │   ├──1_PLANNING.md
+│   │   ├──2_DESIGN.md
+│   │   └──3_USER_STORIES.md
+│   │   └──4_API_END_POINTS_OVERVIEW.md
+│   │   └──5_DATABASE_SCHEMA.md
+│   │   └──6_ARCHITECTURE.md
+│   │
+|   ├── step2/
+│   │   ├──1_SETUP.md
+│   │   ├──2_PROJECT_STRUCTURE.md
+│   │   └──3_TESTING_SETUP.md
+│   │
+├── requirements/
+│   └── requirements.txt
+│   │
+├── src/
 │   ├── __init__.py             # (empty by requirement)
 │   ├── config.py               # Configurations for envs
 │   ├── constant.py             # Shared constants (like status values)
@@ -54,7 +78,8 @@ TODO-Management/
 │
 ├── .env.example                # Example env file
 ├── .gitignore                  # Ignore venv, pycache, etc.
-├── requirements.txt            # Dependencies
+├── CHANGELOG.md
+├── .pre-commit-config.yaml
 ├── alembic.ini                 # Alembic configuration (after init)
 ├── app.py                      # Flask entry point
 └── README.md                   # Project overview

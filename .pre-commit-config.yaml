@@ -1,0 +1,40 @@
+repos:
+  # 🔹 Black (code formatter)
+  - repo: https://github.com/psf/black
+    rev: '25.1.0'
+    hooks:
+      - id: black
+        args: ["-l", "120"]
+
+  # 🔹 isort (import sorter, black-compatible)
+  - repo: https://github.com/pycqa/isort
+    rev: '6.0.1'
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+        exclude: ^services/db_management/migrations/versions/
+
+  # 🔹 Flake8 (linting)
+  - repo: https://github.com/PyCQA/flake8
+    rev: '7.2.0'
+    hooks:
+      - id: flake8
+        args:
+          [
+            "--ignore=E203,E501,E701,W503",
+            "--max-line-length=100",
+            "app",
+            "services",
+            "tests",
+          ]
+        exclude: ^(migrations/|services/db_management/migrations/versions/)
+
+  # 🔹 Pre-commit built-in hooks (general hygiene)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-added-large-files
