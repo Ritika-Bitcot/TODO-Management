@@ -2,8 +2,8 @@ import os
 
 from flask import Flask
 
-from config import get_settings
-from routes.register import register_blueprints
+from src.core.config import get_settings
+from src.routes.register import register_blueprints
 
 
 def create_app(env: str | None = None) -> Flask:
@@ -16,7 +16,7 @@ def create_app(env: str | None = None) -> Flask:
     Returns:
         Flask: The Flask application instance.
     """
-    env = env or os.getenv("FLASK_ENV", "development")
+    env = (env or os.getenv("FLASK_ENV", "development")).strip().lower()
     settings = get_settings(env)
 
     app = Flask(__name__)
