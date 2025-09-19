@@ -1,6 +1,7 @@
 # src/routes/auth_routes.py
 from flask import Blueprint, jsonify, request
 from pydantic import ValidationError
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from src.core.database import get_db
@@ -23,6 +24,9 @@ def register() -> tuple[dict, int]:
             jsonify({"id": user.id, "username": user.username, "email": user.email}),
             201,
         )
+
+    except IntegrityError:
+        return jsonify({"error": "User with this email already exists"}), 409
 
     except ValidationError as e:
         errors = [{"loc": err["loc"], "msg": str(err["msg"])} for err in e.errors()]
