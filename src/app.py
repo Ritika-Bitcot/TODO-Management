@@ -2,8 +2,8 @@ import os
 
 from flask import Flask
 
-from core.config import get_settings
-from routes.register import register_blueprints
+from src.core.config import get_settings
+from src.routes.register import register_blueprints
 
 
 def create_app(env: str | None = None) -> Flask:

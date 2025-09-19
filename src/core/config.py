@@ -39,7 +39,8 @@ class CommonSettings(BaseSettings):
         This property is useful when creating tokens that expire after a certain time.
         It is calculated from the jwt_refresh_token_expires setting.
 
-        :return: A timedelta object representing the time delta before the refresh token expires.
+        :return: A timedelta object representing the time delta
+        before the refresh token expires.
         :rtype: timedelta
         """
         return timedelta(seconds=self.jwt_refresh_token_expires)
