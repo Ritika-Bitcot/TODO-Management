@@ -2,6 +2,13 @@
 
 ## [Step 3]
 
+**Password Security**
+
+### Added
+
+- `src/utils/password_helper.py` for bcrypt hashing and verification of passwords.
+- `src/services/auth_service.py` integration with Password Helper for user register and password verfy.
+
 **Database Integration & Migration**
 ### Added
 
