@@ -16,7 +16,7 @@ def create_app(env: str | None = None) -> Flask:
     Returns:
         Flask: The Flask application instance.
     """
-    env = env or os.getenv("FLASK_ENV", "development")
+    env = (env or os.getenv("FLASK_ENV", "development")).strip().lower()
     settings = get_settings(env)
 
     app = Flask(__name__)

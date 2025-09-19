@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,8 +15,44 @@ class CommonSettings(BaseSettings):
     # JWT
     jwt_secret_key: str = Field(..., env="JWT_SECRET_KEY")
     jwt_algorithm: str = Field("HS256", env="JWT_ALGORITHM")
-    jwt_access_token_expires: int = Field(3600, env="JWT_ACCESS_TOKEN_EXPIRES")  # seconds
-    jwt_refresh_token_expires: int = Field(3600, env="JWT_REFRESH_TOKEN_EXPIRES")  # seconds
+    jwt_access_token_expires: int = Field(3600, env="JWT_ACCESS_TOKEN_EXPIRES")  # 1 hour in seconds
+    jwt_refresh_token_expires: int = Field(86400, env="JWT_REFRESH_TOKEN_EXPIRES")  # 24 hours in seconds
+
+    @field_validator("secret_key", "jwt_secret_key")
+    def validate_non_empty(cls, v: str) -> str:
+        """
+        Validates that the given secret keys are not empty.
+
+        Args:
+            v (str): The secret key to be validated.
+
+        Returns:
+            str: The validated secret key.
+
+        Raises:
+            ValueError: If the secret key is empty.
+        """
+        if not v.strip():
+            raise ValueError("Secret keys cannot be empty")
+        return v
+
+    @field_validator("jwt_access_token_expires", "jwt_refresh_token_expires")
+    def validate_token_expiry(cls, v: int) -> int:
+        """
+        Validates that the given JWT expiry is positive.
+
+        Args:
+            v (int): The value to be validated.
+
+        Returns:
+            int: The validated value.
+
+        Raises:
+            ValueError: If the value is not positive.
+        """
+        if v <= 0:
+            raise ValueError("JWT expiry must be positive")
+        return v
 
     @property
     def jwt_access_expires_timedelta(self) -> timedelta:
@@ -55,6 +91,43 @@ class DevelopmentSettings(CommonSettings):
     db_port: int = Field(..., env="DB_PORT")
     db_name: str = Field(..., env="DB_NAME")
 
+    @field_validator("db_user", "db_password", "db_host", "db_name")
+    def validate_non_empty_db_fields(cls, v: str) -> str:
+        """
+        Validates that the given database fields are not empty.
+
+        Args:
+            v (str): The value to be validated.
+
+        Returns:
+            str: The validated value.
+
+        Raises:
+            ValueError: If the value is empty.
+        """
+
+        if not v.strip():
+            raise ValueError("Database fields cannot be empty")
+        return v
+
+    @field_validator("db_port")
+    def validate_port(cls, v: int) -> int:
+        """
+        Validates that the given database port is between 1 and 65535.
+
+        Args:
+            v (int): The value to be validated.
+
+        Returns:
+            int: The validated value.
+
+        Raises:
+            ValueError: If the value is not between 1 and 65535.
+        """
+        if not (1 <= v <= 65535):
+            raise ValueError("DB_PORT must be between 1 and 65535")
+        return v
+
     @property
     def sqlalchemy_database_uri(self) -> str:
         """
@@ -71,36 +144,21 @@ class DevelopmentSettings(CommonSettings):
         )
 
 
-class TestingSettings(CommonSettings):
-    """Testing configuration (should be used only in CI/CD or test runners)."""
-
-    test_db_user: str = Field(..., env="TEST_DB_USER")
-    test_db_password: str = Field(..., env="TEST_DB_PASSWORD")
-    test_db_host: str = Field(..., env="TEST_DB_HOST")
-    test_db_port: int = Field(..., env="TEST_DB_PORT")
-    test_db_name: str = Field(..., env="TEST_DB_NAME")
-
-    @property
-    def sqlalchemy_database_uri(self) -> str:
-        return (
-            f"postgresql+psycopg2://{self.test_db_user}:{self.test_db_password}"
-            f"@{self.test_db_host}:{self.test_db_port}/{self.test_db_name}"
-        )
-
-
-# Factory method to get settings dynamically
+# Factory method
 def get_settings(env: str = "development") -> CommonSettings:
     """
-    Factory method to get settings dynamically.
+    Factory method to get the settings object based on the environment.
 
-    This method takes an environment string as an argument and
-    returns the corresponding settings object.
+    Args:
+        env (str, optional): The environment to use. Defaults to "development".
 
-    :param env: The environment string. Can be either "development" or "testing".
-    :type env: str
-    :return: The settings object for the given environment.
-    :rtype: CommonSettings
+    Returns:
+        CommonSettings: The settings object for the given environment.
+
+    Raises:
+        ValueError: If the environment is not supported.
     """
-    if env == "testing":
-        return TestingSettings()
-    return DevelopmentSettings()
+    env = env.strip().lower()
+    if env == "development":
+        return DevelopmentSettings()
+    raise ValueError(f"Unsupported environment: {env}")
