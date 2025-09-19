@@ -2,6 +2,12 @@
 
 ## [Step 3]
 
+**User Authentication and Pydantic Validation**
+### Added
+- User registration and login routes (`src/routes/auth_routes.py`)
+- JWT-based authentication and token generation (`src/utils/jwt_helper.py`)
+- Input validation using Pydantic schemas (`src/schemas/user_schema.py`)
+
 **Password Security**
 
 ### Added
