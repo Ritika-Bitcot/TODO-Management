@@ -14,7 +14,7 @@ settings = get_settings()
 
 # Base class for all ORM models
 Base = declarative_base()
-# ensure it is after Base declaration
+
 from src.models.task_model import Task
 from src.models.user_model import User
 
