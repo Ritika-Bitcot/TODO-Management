@@ -1,5 +1,39 @@
 # Changelog
 
+## [Step 3]
+
+**User Authentication and Pydantic Validation**
+### Added
+- User registration and login routes (`src/routes/auth_routes.py`)
+- JWT-based authentication and token generation (`src/utils/jwt_helper.py`)
+- Input validation using Pydantic schemas (`src/schemas/user_schema.py`)
+
+**Password Security**
+
+### Added
+
+- `src/utils/password_helper.py` for bcrypt hashing and verification of passwords.
+- `src/services/auth_service.py` integration with Password Helper for user register and password verfy.
+
+**Database Integration & Migration**
+### Added
+
+- SQLAlchemy integration and database connection setup in src/core/database.py
+- Alembic configuration (alembic.ini) and initial migration folder (src/migrations/)
+- Database models for User and Task, including base.py for shared metadata
+
+### Changed
+- Moved config from src/config.py → src/core/config.py (as part of new core/ structure)
+- Updated `.pre-commit-config.yaml` to ignore updating migrations
+- Updated `src/app.py` to change path for `config.py` import
+- Updated project structure documentation (docs/step2/2_PROJECT_STRUCTURE.md) to reflect database layer
+
+**Local Development Setup**
+### Added
+- Local development setup with environment-based configuration
+- `.env` and `.env.example` for Flask secret key, DB URL, and JWT secret
+- Validation of environment variables using **Pydantic** in `src/config.py`
+
 ## [Step 2]
 ### Added
 - Project setup guide, project structure, and testing documentation

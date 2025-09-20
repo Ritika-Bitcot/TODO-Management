@@ -58,7 +58,25 @@ Unauthorized task access.
 
 SQL injection attempts.
 
-## 3. Test Configuration
+
+
+## 3. Environment & Database Setup for Testing
+
+We use a separate database for tests to ensure isolation.
+```
+.env.testing
+```
+Create a dedicated environment file for testing:
+```
+FLASK_ENV=testing
+TEST_DB_USER=test_user
+TEST_DB_PASSWORD=test_password
+TEST_DB_HOST=localhost
+TEST_DB_PORT=5432
+TEST_DB_NAME=todo_db_test
+
+JWT_SECRET_KEY=your_key
+```
 
 Create ```pytest.ini``` in the project root:
 ```

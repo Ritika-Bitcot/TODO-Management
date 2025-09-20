@@ -5,6 +5,7 @@ repos:
     hooks:
       - id: black
         args: ["-l", "120"]
+        exclude: ^(src/migrations/|services/db_management/migrations/)
 
   # 🔹 isort (import sorter, black-compatible)
   - repo: https://github.com/pycqa/isort
@@ -12,7 +13,7 @@ repos:
     hooks:
       - id: isort
         args: ["--profile", "black"]
-        exclude: ^services/db_management/migrations/versions/
+        exclude: ^(src/migrations/|services/db_management/migrations/)
 
   # 🔹 Flake8 (linting)
   - repo: https://github.com/PyCQA/flake8
@@ -21,18 +22,20 @@ repos:
       - id: flake8
         args:
           [
-            "--ignore=E203,E501,E701,W503",
+            "--ignore=E203,E501,E701,W503,F401,W291,E402,E302,E128,E122",
             "--max-line-length=100",
             "src",
           ]
-        exclude: ^(app|services|tests|migrations/|docs/|requirements/)
+        exclude: ^(src/migrations/|services/db_management/migrations/)
 
   # 🔹 Pre-commit built-in hooks (general hygiene)
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: trailing-whitespace
+        exclude: ^(src/migrations/|services/db_management/migrations/)
       - id: end-of-file-fixer
+        exclude: ^(src/migrations/|services/db_management/migrations/)
       - id: check-yaml
       - id: check-toml
       - id: check-added-large-files
