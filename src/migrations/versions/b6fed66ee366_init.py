@@ -1,8 +1,16 @@
 """init
 
 Revision ID: b6fed66ee366
-Revises: 
+Revises:
 Create Date: 2025-09-19 04:03:25.934878
+
+"""
+
+from typing import Sequence, Union
+
+# revision identifiers, used by Alembic.
+revision: str = "b6fed66ee366"
+
 
 """
 from typing import Sequence, Union
